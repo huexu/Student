@@ -1,5 +1,6 @@
 package com.infosys.student.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,8 +9,18 @@ import javax.persistence.Table;
 @Table(name="student")
 public class Student {
 	@Id
+//	create sequence oracle_seq; Oracle创建序列，主键使用序列
+//	@SequenceGenerator(name="id",sequenceName="oracle_seq") // You need to specify sequenceName if it is different from name, otherwise just use name
+//  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="id")	
+	
+//  @GeneratedValue(strategy = GenerationType.IDENTITY) //H2 Not support
+//	@Column(updatable = false)
 	String id;
+
+    @Column(nullable = false)
 	String name;
+
+    @Column(nullable = false,name = "classname")
 	String className;
 	
 	public Student() {
